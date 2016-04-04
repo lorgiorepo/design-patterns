@@ -1,0 +1,34 @@
+@startuml
+
+title Creational patterns - Builder
+
+class Pizza {
+  -String masa
+  -String salsa
+  -String relleno
+  +void setMasa(String masa)
+  +void setSalsa(String salsa)
+  +void setRelleno(String relleno)
+}
+
+abstract class PizzaBuilder {
+  #Pizza pizza
+  +Pizza getPizza()
+  +void crearNuevaPizza()
+  +void buildMasa()
+  +void buildSalsa()
+  +void buildRelleno()
+}
+
+PizzaBuilder <|-down- HawaiPizzaBuilder: Inheritance
+PizzaBuilder <|-down- PicantePizzaBuilder: Inheritance
+
+class Cocina {
+  -PizzaBuilder pizzaBuilder
+}
+
+Cocina "1" *-up- "1" PizzaBuilder: Agregation
+
+
+
+@enduml
